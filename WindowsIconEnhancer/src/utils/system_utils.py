@@ -2,6 +2,7 @@
 
 import ctypes
 import os
+import sys
 import subprocess
 import logging
 from pathlib import Path
@@ -13,7 +14,7 @@ logger = logging.getLogger(__name__)
 def is_admin() -> bool:
     """Check if running with administrator privileges."""
     try:
-        return ctypes.windll.shell.IsUserAnAdmin()
+        return ctypes.windll.shell32.IsUserAnAdmin()
     except Exception as e:
         logger.error(f"Failed to check admin status: {e}")
         return False
@@ -25,8 +26,8 @@ def request_admin_privileges() -> bool:
         return True
 
     try:
-        ctypes.windll.shell.ShellExecuteW(
-            None, "runas", os.sys.executable, " ".join(os.sys.argv), None, 1
+        ctypes.windll.shell32.ShellExecuteW(
+            None, "runas", sys.executable, " ".join(sys.argv), None, 1
         )
         return True
     except Exception as e:
