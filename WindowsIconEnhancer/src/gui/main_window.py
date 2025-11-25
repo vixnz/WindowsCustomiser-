@@ -79,6 +79,7 @@ class MainWindow(QMainWindow):
             FoldersTab,
             FilesTab,
             ShortcutsTab,
+            ExplorerTab,
             BatchTab,
             SettingsTab,
         )
@@ -88,6 +89,7 @@ class MainWindow(QMainWindow):
         self.tabs.addTab(FoldersTab(self), "📁 Folders")
         self.tabs.addTab(FilesTab(self), "📄 File Types")
         self.tabs.addTab(ShortcutsTab(self), "🔗 Shortcuts")
+        self.tabs.addTab(ExplorerTab(self), "🖥️ Explorer")
         self.tabs.addTab(BatchTab(self), "⚙️ Batch Operations")
         self.tabs.addTab(SettingsTab(self), "⚙️ Settings")
 
